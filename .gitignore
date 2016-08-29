@@ -92,3 +92,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+####################
+# PROJECT SPECIFICS
+
+public/js
+public/fonts
+public/css
+public/img
