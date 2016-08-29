@@ -15,11 +15,25 @@ var nameGen = require('../../services/nameGenerator');
 // - MODEL DEFINITION
 
 var SettingsModel = ottoman.model('Settings', {
-    settingsId: { type:'string', auto:'uuid', readonly: true },
+    settingsId: { type:'string', auto: 'uuid', readonly: true },
     createdOn: { type: 'Date', default: new Date() },
-    alias: { type: 'string', default: nameGen.generate(), readonly:true },
-    settings: {
+    alias: { type: 'string', default: nameGen.generate(), readonly: true },
 
+    grid: {
+      width: 'integer',
+      height: 'integer'
+    },
+
+    teamRed: {
+      sightLength: 'integer',
+      count: 'integer',
+      speed: 'integer'
+    },
+
+    teamBlue: {
+      sightLength: 'integer',
+      count: 'integer',
+      speed: 'integer'
     }
 });
 
@@ -30,12 +44,16 @@ var SettingsModel = ottoman.model('Settings', {
  * saves and creates a new instance of the settings object
  * also passes a callback to check for success
  *
- * @param settings
- * @param done
+ * @param grid      sets the grid params
+ * @param teamRed   sets the features of team red
+ * @param teamBlue  sets the features of team blue
+ * @param done      callback function
  */
-SettingsModel.createAndSave = function (settings, done) {
+SettingsModel.createAndSave = function (grid, teamRed, teamBlue, done) {
   this.create({
-      settings: settings
+      grid: grid,
+      teamRed: teamRed,
+      teamBlue: teamBlue
   }, done);
 };
 
