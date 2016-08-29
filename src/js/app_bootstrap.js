@@ -5,7 +5,7 @@
  * This is the main entry point for the clientside app
  */
 
-angular.module('myHns', ['ui.router'])
+angular.module('HnsApp', ['ui.router'])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     'use strict';
 

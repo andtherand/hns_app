@@ -19,7 +19,7 @@ module.exports = {
   fonts: {
     src: [
       './node_modules/font-awesome/fonts/*',
-      './node_modules/bootstrap-sass/assets/fonts/*'
+      './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ],
     dest: dest + '/fonts'
   },
