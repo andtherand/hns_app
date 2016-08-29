@@ -1,0 +1,25 @@
+{
+  "name": "my-hide-n-seek",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular": "~1.5.8",
+    "angular-ui-bootstrap": "~2.1.3",
+    "angular-ui-router": "~0.3.1",
+    "body-parser": "~1.15.1",
+    "bootstrap-sass": "^3.3.7",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "helmet": "^2.1.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "node-sass-middleware": "0.8.0",
+    "ottoman": "~1.0.4",
+    "phaser": "~2.6.2",
+    "serve-favicon": "~2.3.0"
+  }
+}
