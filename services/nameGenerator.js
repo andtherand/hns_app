@@ -339,7 +339,7 @@ function generate() {
     var leftSide = randomElement(left);
     var rightSide = randomElement(right);
 
-    return `${leftSide} ${rightSide}`;
+    return `${leftSide}-${rightSide}`;
 }
 
 /**
@@ -355,4 +355,4 @@ function randomElement(arr) {
 // ---------------------------------------------
 // - MODULE
 
-module.exports = generate;
+module.exports.generate = generate;
