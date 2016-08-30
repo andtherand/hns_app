@@ -37,3 +37,35 @@ a
   @include make-md-column(3)
   @include make-md-column-offset(1)
 
+// --------------------------
+// - SECTIONS.Settings.Single
+
+.setting
+  // gerneral
+  .setting-item
+    @include clearfix
+    @include make-row()
+    padding: .75em 0
+
+    &:nth-of-type(odd)
+      background-color: #e3e3e3
+
+  .setting-label
+    @include make-md-column(2)
+
+  .setting-label:after
+    content: ':'
+
+  .setting-value
+    @include make-md-column(4)
+    @extend .text-left
+
+  .tab-content
+    padding: 1em
+
+  //// specialized
+  //.setting-info,
+  //.setting-grid,
+  //.setting-teamred,
+  //.setting-teamblue
+

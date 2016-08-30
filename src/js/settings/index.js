@@ -13,6 +13,7 @@ angular.module('Hns.settings', requiredModules)
   .factory('SettingsResource', require('./SettingsResource'))
   .controller('SettingsShowAction', require('./settingsController').showAction)
   .controller('SettingsCreateAction', require('./settingsController').createAction)
+  .controller('SettingsShowSingleAction', require('./settingsController').showSingleAction)
   //
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider) {
     'use strict';

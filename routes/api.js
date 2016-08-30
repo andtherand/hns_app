@@ -18,6 +18,7 @@ router.post('/settings', settings.create);
 router.get('/settings', settings.findAll);
 // Read: settings by alias
 router.get('/settings/by-alias/:alias', settings.findOneByAlias);
+router.get('/settings/:id', settings.findOne);
 // update
 router.put('/settings/:id', settings.update);
 // no delete currently

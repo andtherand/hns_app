@@ -33,10 +33,14 @@ function SettingsShowAction(SettingsResource) {
 
 // --
 
-SettingsShowSingleAction.$inject = ['SettingsResource'];
+SettingsShowSingleAction.$inject = ['$stateParams', 'SettingsResource'];
 
-function SettingsShowSingleAction(SettingsResource) {
+function SettingsShowSingleAction($stateParams, SettingsResource) {
   var vm = this;
+
+  vm.setting = SettingsResource.get({ id: $stateParams.id }, function () {
+    console.log('loading of id ', $stateParams.id, ' done');
+  });
 }
 
 // ---------------------------------------

@@ -2,7 +2,7 @@
 <!--found some settings show them-->
 <div class="settings-list" ng-show="settings.settings.length">
   <div class="settings-list--item" ng-repeat="setting in settings.settings">
-    <a ui-sref="">
+    <a ui-sref="settings-details({id:setting._id})">
       <div class="setting-list--id">{{ setting._id }}</div>
       <div class="setting-list--alias">{{ setting.alias }}</div>
       <div class="setting-list--created">{{ setting.createdOn }}</div>
