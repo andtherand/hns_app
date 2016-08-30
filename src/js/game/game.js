@@ -2,13 +2,14 @@
  * Created by my on 30.08.16.
  */
 
+var channels = require('../config/events');
+
 /**
  * The main game file wrapped in a self-invoking anonymous function.
 */
+GameController.$inject = ['PubSubService'];
 
-GameController.$inject = [];
-
-function GameController() {
+function GameController(PubSubService) {
   var maxColumns = 50,
       maxRows = 37,
       cursors,
@@ -18,6 +19,17 @@ function GameController() {
         update: update
       });
 
+  PubSubService
+    .addSubscriber(channels.ACTIVATE_SETTINGS, updateGame);
+
+  /**
+   * kills the current game and re initializes a new one
+   */
+  function updateGame(settings) {
+    game.destroy();
+  }
+
+  // --------------------
   // Define game methods
 
   function preload() {

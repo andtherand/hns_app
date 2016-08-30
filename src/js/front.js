@@ -13,6 +13,9 @@ require('./_shared_vendors');
 // all templates
 require('./template');
 
+// all services
+require('./services');
+
 // the settings module
 require('./settings');
 

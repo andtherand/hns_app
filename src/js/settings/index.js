@@ -11,6 +11,8 @@ var requiredModules = ['ngResource', 'ui.router'];
 
 angular.module('Hns.settings', requiredModules)
   .factory('SettingsResource', require('./SettingsResource'))
+  .service('SettingsStorage', require('./SettingsStorage'))
+  //
   .controller('SettingsShowAction', require('./settingsController').showAction)
   .controller('SettingsCreateAction', require('./settingsController').createAction)
   .controller('SettingsShowSingleAction', require('./settingsController').showSingleAction)
