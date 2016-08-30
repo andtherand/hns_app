@@ -17,7 +17,9 @@ var SettingsModel = require('../../schema/models/settings');
 function returnResponse(err, results, res) {
   'use strict';
 
-  returnError(err, res);
+  if (err) {
+    return returnError(err, res);
+  }
 
   res.status = 202;
   res.send(results);
@@ -29,12 +31,9 @@ function returnResponse(err, results, res) {
  * @param res
  */
 function returnError(err, res) {
-  if (err) {
-    console.log("An error occured:" + JSON.stringify(err));
-    res.status = 400;
-    res.send(err);
-    return;
-  }
+  console.log("An error occured: " + JSON.stringify(err));
+  res.status = 400;
+  res.send(err);
 }
 
 // --------------------------------------
@@ -57,7 +56,32 @@ module.exports.findAll = function findAll(req, res, next) {
   'use strict';
 
   SettingsModel.find({}, function(err, results) {
-    return returnResponse(err, results, res);
+    var returnResults = results;
+    res.status = 200;
+
+    if (err) {
+      console.log("An error occured: " + JSON.stringify(err));
+      res.status = 400;
+      returnResults = [];
+    }
+
+    res.send(returnResults);
+
+  });
+};
+
+/**
+ * Finder method: find one setting by it's id
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
+module.exports.findOneByAlias = function findOne(req, res, next) {
+  'use strict';
+
+  SettingsModel.getById(req.params.id, function(err, result) {
+    return returnResponse(err, result, res);
   });
 };
 

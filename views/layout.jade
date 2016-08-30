@@ -1,16 +1,25 @@
 doctype html
-html( ng-app='HnsApp' )
+html(ng-app='HnsApp')
   head
-    meta( charset='utf-8' )
+    meta(charset='utf-8')
 
     title.
       {{ title }}
-    link( rel='stylesheet', href='/css/style.css' )
+    link(rel='stylesheet', href='/css/style.css')
 
   body
+    header.container
+      h1.brand
+        a(ui-sref='home').
+          Hide 'n' Seek
+    nav
+      ul
+        li
+          a(ui-sref='settings').
+            Show Settings
+
     main.container(style="margin-top:50px")
       block content
 
-    script( src='/js/front.js' )
-    script( src='/js/app_bootstrap.js' )
-
+    script(src='/js/front.js')
+    script(src='/js/app_bootstrap.js')

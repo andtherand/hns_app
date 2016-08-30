@@ -43,7 +43,7 @@ module.exports = {
     },
 
     injectModule: {
-      template: "'use strict'; module.exports = angular.module('hns.templates',[%templateModules%]);\n",
+      template: "'use strict'; module.exports = angular.module('Hns.templates',[%templateModules%]);\n",
       search: '%templateModules%'
     },
     minifyHtml: {

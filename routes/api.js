@@ -10,17 +10,16 @@ var router = express.Router();
 var settings = require('./api/settingsImpl');
 
 // -------------------------------------------
-// - ROUTES
+// - SETTINGS ROUTES
 
 // create
-router.post('/setting', settings.create);
-// Read
-// get all settings
+router.post('/settings', settings.create);
+// Read: get all settings
 router.get('/settings', settings.findAll);
-// settings by alias
-router.get('/setting/by-alias/:alias', settings.findOneByAlias);
+// Read: settings by alias
+router.get('/settings/by-alias/:alias', settings.findOneByAlias);
 // update
-router.put('/setting/:id', settings.update);
+router.put('/settings/:id', settings.update);
 // no delete currently
 
 // -------------------------------------------
