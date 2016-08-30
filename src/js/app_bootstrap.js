@@ -5,7 +5,7 @@
  * This is the main entry point for the client-side app
  */
 
-angular.module('HnsApp', ['ui.bootstrap', 'Hns.templates', 'Hns.settings'])
+angular.module('HnsApp', ['ui.bootstrap', 'Hns.templates', 'Hns.settings', 'Hns.game'])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     'use strict';
 
@@ -14,6 +14,8 @@ angular.module('HnsApp', ['ui.bootstrap', 'Hns.templates', 'Hns.settings'])
     $stateProvider
       .state('home', {
         url: '/',
+        controller: 'GameController',
+        alias: 'theGame',
         data: {
           pageTitle: 'Hide\'n\'Seek'
         }

@@ -14,4 +14,4 @@ require('angular-ui-bootstrap');
 // others
 window.PIXI = require('phaser/build/pixi');
 window.p2 = require('phaser/build/p2');
-require('phaser/build/phaser');
+window.Phaser = require('phaser/build/phaser');

@@ -10,6 +10,8 @@
 var BaseCharacter = require('./BaseCharacter'),
   BlueCharacter = Object.create(BaseCharacter);
 
+BlueCharacter.isDead = false;
+
 /**
  * extending the base character with a shelter method
  * lookout for shelter

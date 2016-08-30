@@ -27,13 +27,9 @@ var BaseCharacter = {
     return self;
   },
 
-  states: {
-    MOVING: 1,
-    LOOKING: 2
-  },
-
   /**
    * move the character
+   *
    */
   move: function move() {
 

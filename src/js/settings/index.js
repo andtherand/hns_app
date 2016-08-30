@@ -30,16 +30,6 @@ angular.module('Hns.settings', requiredModules)
         }
       })
 
-      .state('settings-details', {
-        url: '/settings/:id',
-        controller: 'SettingsShowSingleAction',
-        controllerAs: 'settings',
-        templateUrl: 'template/controllers/settings/show-single.html',
-        data: {
-          pageTitle: 'Single settings'
-        }
-      })
-
       // create new settings
       .state('settings-create', {
         url: '/settings/create',
@@ -48,6 +38,16 @@ angular.module('Hns.settings', requiredModules)
         templateUrl: 'template/controllers/settings/create.html',
         data: {
           pageTitle: 'Create settings'
+        }
+      })
+
+      .state('settings-details', {
+        url: '/settings/:id',
+        controller: 'SettingsShowSingleAction',
+        controllerAs: 'settings',
+        templateUrl: 'template/controllers/settings/show-single.html',
+        data: {
+          pageTitle: 'Single settings'
         }
       })
   }]);

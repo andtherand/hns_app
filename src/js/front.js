@@ -15,3 +15,6 @@ require('./template');
 
 // the settings module
 require('./settings');
+
+// the game
+require('./game');
