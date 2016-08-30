@@ -45,8 +45,24 @@ SettingsCreateAction.$inject = ['SettingsResource'];
 function SettingsCreateAction(SettingsResource) {
   var vm = this;
 
-}
+  vm.grid = {
+    width: 5,
+    height: 5
+  };
 
+  vm.teamRed = {
+    sightLength: 5,
+    count: 2,
+    speed: 3
+  };
+
+  vm.teamBlue = {
+    sightLength: 3,
+    count: 5,
+    speed: 2
+  };
+
+}
 
 // ---------------------------------------
 

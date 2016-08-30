@@ -16,27 +16,27 @@ var nameGen = require('../../services/nameGenerator');
 // - MODEL DEFINITION
 
 var SettingsModel = ottoman.model('Settings', {
-  settingsId: {type: 'string', auto: 'uuid', readonly: true},
-  createdOn: {type: 'Date', default: new Date()},
-  alias: {type: 'string', default: nameGen.generate(), readonly: true},
+    settingsId: { type: 'string', auto: 'uuid', readonly: true },
+    createdOn: { type: 'Date', default: new Date() },
+    alias: { type: 'string', default: nameGen.generate(), readonly: true },
 
-  grid: {
-    width: 'integer',
-    height: 'integer'
-  },
+    grid: {
+      width: 'integer',
+      height: 'integer'
+    },
 
-  teamRed: {
-    sightLength: 'integer',
-    count: 'integer',
-    speed: 'integer'
-  },
+    teamRed: {
+      sightLength: 'integer',
+      count: 'integer',
+      speed: 'integer'
+    },
 
-  teamBlue: {
-    sightLength: 'integer',
-    count: 'integer',
-    speed: 'integer'
-  }},
-  {
+    teamBlue: {
+      sightLength: 'integer',
+      count: 'integer',
+      speed: 'integer'
+    }
+  }, {
     index: {
       findByAlias: {
         by: 'alias',

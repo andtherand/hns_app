@@ -1,8 +1,36 @@
+// --------------------------
+// - IMPORTS
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss"
+
+// --------------------------
+// - TAGS
 
 a
   color: #00B7FF
 
+// --------------------------
+// - HEADER
 
 .brand
   @extend .text-center
+
+
+// --------------------------
+// - SECTIONS
+
+// --------------------------
+// - SECTIONS.Settings
+
+.settings-creation
+  .settings-creation--title
+    font-size: 1.2em
+
+.settings-creation--grid
+  @include make-md-column(3)
+
+.settings-creation--teamred,
+.settings-creation--teamblue
+  @include make-md-column(3)
+  @include make-md-column-offset(1)
+
