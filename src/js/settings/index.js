@@ -3,7 +3,7 @@
  */
 
 /**
- * This file servers as a bundle of controllers and makes it easier
+ * This file serves as the settings module and makes it easier
  * to include it in the concatenated front.js file
  */
 
@@ -15,7 +15,7 @@ angular.module('Hns.settings', requiredModules)
   .controller('SettingsCreateAction', require('./settingsController').createAction)
   .controller('SettingsShowSingleAction', require('./settingsController').showSingleAction)
   //
-  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider) {
     'use strict';
 
     $stateProvider
