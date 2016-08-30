@@ -21,7 +21,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "ottoman": "~1.0.4",
-    "phaser": "~2.6.2",
+    "phaser": "^2.6.2",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
@@ -63,5 +63,14 @@
     "run-sequence": "^1.1.5",
     "vinyl-source-stream": "~1.1.0",
     "watchify": "^3.7.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "Phaser": "global:Phaser",
+    "PIXI": "global:PIXI"
   }
 }

@@ -16,12 +16,33 @@ a
 .brand
   @extend .text-center
 
-
 // --------------------------
 // - SECTIONS
 
 // --------------------------
-// - SECTIONS.Settings
+// - SECTIONS.Settings.List
+
+.settings-list
+  .settings-list--item
+    @extend .clearfix
+    padding: 0.5em
+    margin-bottom: 1.2em
+
+    &:nth-of-type(odd)
+      background-color: #e3e3e3
+
+  .settings-list--values
+    @include make-md-column(12)
+
+  .setting-list--value
+    @include make-md-column(4)
+
+  .settings-tools
+    padding: 1.5em 0 0 0
+    border-top: 1px solid #999
+
+// --------------------------
+// - SECTIONS.Settings.Creation
 
 .settings-creation
   @include make-row()
@@ -43,7 +64,7 @@ a
 .setting
   // gerneral
   .setting-item
-    @include clearfix
+    @extend .clearfix
     @include make-row()
     padding: .75em 0
 
@@ -62,10 +83,3 @@ a
 
   .tab-content
     padding: 1em
-
-  //// specialized
-  //.setting-info,
-  //.setting-grid,
-  //.setting-teamred,
-  //.setting-teamblue
-
