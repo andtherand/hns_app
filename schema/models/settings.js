@@ -41,7 +41,12 @@ var SettingsModel = ottoman.model('Settings', {
       findByAlias: {
         by: 'alias',
         type: 'refdoc'
+      },
+      findAny: {
+        by: '_id',
+        type: 'n1ql'
       }
+
     }
   }
 );
@@ -58,7 +63,7 @@ var SettingsModel = ottoman.model('Settings', {
  * @param teamBlue  sets the features of team blue
  * @param done      callback function
  */
-SettingsModel.createAndSave = function (grid, teamRed, teamBlue, done) {
+SettingsModel.createAndSave = function createAndSave(grid, teamRed, teamBlue, done) {
   this.create({
       grid: grid,
       teamRed: teamRed,

@@ -31,6 +31,14 @@ function SettingsShowAction(SettingsResource) {
   }
 }
 
+// --
+
+SettingsShowSingleAction.$inject = ['SettingsResource'];
+
+function SettingsShowSingleAction(SettingsResource) {
+  var vm = this;
+}
+
 // ---------------------------------------
 // - CREATE
 
@@ -43,7 +51,14 @@ SettingsCreateAction.$inject = ['SettingsResource'];
  * @constructor
  */
 function SettingsCreateAction(SettingsResource) {
-  var vm = this;
+  var vm, settings;
+
+  vm = this;
+  settings = new SettingsResource(); // a settings object to be persisted
+
+  // - INIT
+
+  vm.isSaving = false;
 
   vm.grid = {
     width: 5,
@@ -62,12 +77,28 @@ function SettingsCreateAction(SettingsResource) {
     speed: 2
   };
 
+  // ------------------------------------
+  // - FUNCTIONS
+
+  vm.save = function save() {
+    vm.isSaving = true;
+
+    settings.grid = vm.grid;
+    settings.teamRed = vm.teamRed;
+    settings.teamBlue = vm.teamBlue;
+
+    settings.$save(function() {
+      console.log('saved');
+    });
+
+  }
 }
 
 // ---------------------------------------
 
 module.exports = {
   showAction: SettingsShowAction,
+  showSingleAction: SettingsShowSingleAction,
   createAction: SettingsCreateAction
 };
 

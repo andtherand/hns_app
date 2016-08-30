@@ -31,6 +31,8 @@ function returnResponse(err, results, res) {
  * @param res
  */
 function returnError(err, res) {
+  'use strict';
+
   console.log("An error occured: " + JSON.stringify(err));
   res.status = 400;
   res.send(err);
@@ -41,9 +43,30 @@ function returnError(err, res) {
 
 // Create
 
+/**
+ * saves the settings to the persistend storage
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
 module.exports.create = function create(req, res, next) {
   'use strict';
 
+  var body, settings;
+
+  // data validation
+
+  body = req.body;
+  settings = new SettingsModel({
+    grid: body.grid,
+    teamRed: body.teamRed,
+    teamBlue: body.teamBlue
+  });
+
+  settings.save(function(err) {
+    returnResponse(err, settings, res);
+  });
 };
 
 // Read
@@ -77,7 +100,7 @@ module.exports.findAll = function findAll(req, res, next) {
  * @param res
  * @param next
  */
-module.exports.findOneByAlias = function findOne(req, res, next) {
+module.exports.findOne = function findOne(req, res, next) {
   'use strict';
 
   SettingsModel.getById(req.params.id, function(err, result) {

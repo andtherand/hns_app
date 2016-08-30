@@ -14,6 +14,7 @@ var bucketName = config.couchbase.bucket;
 
 var couchbase = require('couchbase');
 var ottoman = require('ottoman');
+
 var cluster = new couchbase.Cluster(endpoint);
 var bucket = cluster.openBucket(bucketName);
 
@@ -25,4 +26,8 @@ require('./models/settings');
 // ... more to come
 
 // build the necessary indices to function
-ottoman.ensureIndices(function(){});
+ottoman.ensureIndices(function(err) {
+  if (err) {
+    return console.error(err);
+  }
+});

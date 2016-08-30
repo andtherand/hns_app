@@ -18,6 +18,7 @@ angular.module('Hns.settings', requiredModules)
     'use strict';
 
     $stateProvider
+      // show all settings
       .state('settings', {
         url: '/settings',
         controller: 'SettingsShowAction',
@@ -28,6 +29,17 @@ angular.module('Hns.settings', requiredModules)
         }
       })
 
+      .state('settings-details', {
+        url: '/settings/:id',
+        controller: 'SettingsShowSingleAction',
+        controllerAs: 'settings',
+        templateUrl: 'template/controllers/settings/show-single.html',
+        data: {
+          pageTitle: 'Single settings'
+        }
+      })
+
+      // create new settings
       .state('settings-create', {
         url: '/settings/create',
         controller: 'SettingsCreateAction',
