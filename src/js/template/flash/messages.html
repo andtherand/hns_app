@@ -1,7 +1,7 @@
 <div class="flash-widget" ng-cloak>
-    <uib-alert ng-repeat="alert in flash.alerts track by $index"
-           type="{{ alert.type }}"
-           close="flash.close($index)">
-        <p ng-bind-html="alert.msg"></p>
-    </uib-alert>
+  <uib-alert ng-repeat="alert in flash.alerts track by $index"
+     type="{{ alert.type }}"
+     close="flash.close($index)">
+    <p ng-bind-html="alert.msg"></p>
+  </uib-alert>
 </div>

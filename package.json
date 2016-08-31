@@ -23,7 +23,8 @@
     "morgan": "~1.7.0",
     "ottoman": "~1.0.4",
     "phaser": "^2.6.2",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "shortid": "^2.2.6"
   },
   "devDependencies": {
     "browser-sync": "~2.13.0",

@@ -69,10 +69,9 @@ SettingsCreateAction.$inject = ['SettingsResource', 'PubSubService'];
 function SettingsCreateAction(SettingsResource, PubSubService) {
   'use strict';
 
-  var vm, settings;
+  var vm;
 
   vm = this;
-  settings = new SettingsResource(); // a settings object to be persisted
 
   // - INIT
 
@@ -99,15 +98,19 @@ function SettingsCreateAction(SettingsResource, PubSubService) {
   // - FUNCTIONS
 
   vm.save = function save() {
+    var settings = new SettingsResource(); // a settings object to be persisted
     vm.isSaving = true;
 
     settings.grid = vm.grid;
     settings.teamRed = vm.teamRed;
     settings.teamBlue = vm.teamBlue;
 
-    settings.$save(function() {
-      console.log('saved');
-      PubSubService.publish(channels.FLASH_SUCCESS, [{ type: 'success', msg: 'Settings were saved'}]);
+    settings.$save(function(data) {
+      if (data.code == 12) {
+        PubSubService.publish(channels.FLASH_EVENT, [{type: 'error', msg: data.message}]);
+      } else {
+        PubSubService.publish(channels.FLASH_EVENT, [{type: 'success', msg: 'Settings were saved'}]);
+      }
 
       vm.isSaving = false;
     });

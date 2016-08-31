@@ -34,7 +34,7 @@ function FlashController($timeout, PubSubService) {
       _autoClose();
   }
 
-  PubSubService.addSubscriber(channels.FLASH_SUCCESS, _getFlash);
+  PubSubService.addSubscriber(channels.FLASH_EVENT, _getFlash);
 
   // -------------------------------
   // - fns

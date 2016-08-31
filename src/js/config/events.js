@@ -10,5 +10,5 @@
 
 module.exports = {
   ACTIVATE_SETTINGS: 'settings.onActivate',
-  FLASH_SUCCESS: 'flash.onSuccess'
+  FLASH_EVENT: 'flash.onEvent'
 };

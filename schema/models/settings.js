@@ -16,7 +16,6 @@ var nameGen = require('../../services/nameGenerator');
 // - MODEL DEFINITION
 
 var SettingsModel = ottoman.model('Settings', {
-    settingsId: { type: 'string', auto: 'uuid', readonly: true, unique: true },
     createdOn: { type: 'Date', default: new Date() },
     alias: { type: 'string', default: nameGen.generate(), readonly: true },
 
@@ -41,12 +40,7 @@ var SettingsModel = ottoman.model('Settings', {
       findByAlias: {
         by: 'alias',
         type: 'refdoc'
-      },
-      findAny: {
-        by: '_id',
-        type: 'n1ql'
       }
-
     }
   }
 );
