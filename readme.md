@@ -16,7 +16,7 @@ The following description shows what the folders and files are used for:
 
 ### Both
 - node_modules: Houses all dependencies even the frontend dependencies.
-- packages.json: Describes the dependencies need for the production and for the development environments.
+- packages.json: Describes the dependencies needed for the production and for the development environments.
 
 ### Client-side
 - public: Document root which houses the assets like stylesheets, images, web fonts and client-side javascript
