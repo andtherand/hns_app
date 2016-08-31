@@ -10,6 +10,7 @@ require('angular');
 require('angular-ui-router');
 require('angular-resource');
 require('angular-ui-bootstrap');
+require('angular-sanitize');
 
 // others
 window.PIXI = require('phaser/build/pixi');

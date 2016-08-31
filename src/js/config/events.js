@@ -9,5 +9,6 @@
  */
 
 module.exports = {
-  ACTIVATE_SETTINGS: 'settings.onActivate'
+  ACTIVATE_SETTINGS: 'settings.onActivate',
+  FLASH_SUCCESS: 'flash.onSuccess'
 };

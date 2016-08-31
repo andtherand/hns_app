@@ -1,69 +1,77 @@
-<h3>Settings "{{ ::settings.setting.alias }}"</h3>
-<uib-tabset class="setting">
-  <uib-tab index="0" class="setting-section setting-info">
-    <uib-tab-heading class="setting-title">Information</uib-tab-heading>
+<div ng-show="settings.setting.alias">
+  <h3>Settings "{{ ::settings.setting.alias }}"</h3>
+  <uib-tabset class="setting">
+    <uib-tab index="0" class="setting-section setting-info">
+      <uib-tab-heading class="setting-title">Information</uib-tab-heading>
 
-    <div class="setting-item setting-info--id">
-      <div class="setting-label">Id</div>
-      <div class="setting-value">{{ ::settings.setting._id }}</div>
-    </div>
+      <div class="setting-item setting-info--id">
+        <div class="setting-label">Id</div>
+        <div class="setting-value">{{ ::settings.setting._id }}</div>
+      </div>
 
-    <div class="setting-item setting-info--created">
-      <div class="setting-label">Created on</div>
-      <div class="setting-value">{{ ::settings.setting.createdOn }}</div>
-    </div>
-  </uib-tab>
+      <div class="setting-item setting-info--created">
+        <div class="setting-label">Created on</div>
+        <div class="setting-value">{{ ::settings.setting.createdOn }}</div>
+      </div>
+    </uib-tab>
 
-  <uib-tab index="1" class="setting-section setting-grid">
-    <uib-tab-heading class="setting-title">Grid</uib-tab-heading>
+    <uib-tab index="1" class="setting-section setting-grid">
+      <uib-tab-heading class="setting-title">Grid</uib-tab-heading>
 
-    <div class="setting-item setting-grid--height">
-      <div class="setting-label">Height</div>
-      <div class="setting-value">{{ ::settings.setting.grid.height }}</div>
-    </div>
-    <div class="setting-item setting-grid--width">
-      <div class="setting-label">Width</div>
-      <div class="setting-value">{{ ::settings.setting.grid.width }}</div>
-    </div>
-  </uib-tab>
+      <div class="setting-item setting-grid--height">
+        <div class="setting-label">Height</div>
+        <div class="setting-value">{{ ::settings.setting.grid.height }}</div>
+      </div>
+      <div class="setting-item setting-grid--width">
+        <div class="setting-label">Width</div>
+        <div class="setting-value">{{ ::settings.setting.grid.width }}</div>
+      </div>
+    </uib-tab>
 
-  <uib-tab index="2" class="setting-section setting-teamred">
-    <uib-tab-heading class="setting-title">Team Red</uib-tab-heading>
+    <uib-tab index="2" class="setting-section setting-teamred">
+      <uib-tab-heading class="setting-title">Team Red</uib-tab-heading>
 
-    <div class="setting-item setting-teams--sightlength">
-      <div class="setting-label">Sight</div>
-      <div class="setting-value">{{ ::settings.setting.teamRed.sightLength }}</div>
-    </div>
-    <div class="setting-item setting-teams--count">
-      <div class="setting-label">Count</div>
-      <div class="setting-value">{{ ::settings.setting.teamRed.count }}</div>
-    </div>
-    <div class="setting-item setting-teams--speed">
-      <div class="setting-label">Speed</div>
-      <div class="setting-value">{{ ::settings.setting.teamRed.speed }}</div>
-    </div>
-  </uib-tab>
+      <div class="setting-item setting-teams--sightlength">
+        <div class="setting-label">Sight</div>
+        <div class="setting-value">{{ ::settings.setting.teamRed.sightLength }}</div>
+      </div>
+      <div class="setting-item setting-teams--count">
+        <div class="setting-label">Count</div>
+        <div class="setting-value">{{ ::settings.setting.teamRed.count }}</div>
+      </div>
+      <div class="setting-item setting-teams--speed">
+        <div class="setting-label">Speed</div>
+        <div class="setting-value">{{ ::settings.setting.teamRed.speed }}</div>
+      </div>
+    </uib-tab>
 
-  <uib-tab index="3" class="setting-section setting-teamblue">
-    <uib-tab-heading class="setting-title">Team Blue</uib-tab-heading>
+    <uib-tab index="3" class="setting-section setting-teamblue">
+      <uib-tab-heading class="setting-title">Team Blue</uib-tab-heading>
 
-    <div class="setting-item setting-teams--sightlength">
-      <div class="setting-label">Sight</div>
-      <div class="setting-value">{{ ::settings.setting.teamBlue.sightLength }}</div>
-    </div>
-    <div class="setting-item setting-teams--count">
-      <div class="setting-label">Count</div>
-      <div class="setting-value">{{ ::settings.setting.teamBlue.count }}</div>
-    </div>
-    <div class="setting-item setting-teams--speed">
-      <div class="setting-label">Speed</div>
-      <div class="setting-value">{{ ::settings.setting.teamBlue.speed }}</div>
-    </div>
-  </uib-tab>
-</uib-tabset>
+      <div class="setting-item setting-teams--sightlength">
+        <div class="setting-label">Sight</div>
+        <div class="setting-value">{{ ::settings.setting.teamBlue.sightLength }}</div>
+      </div>
+      <div class="setting-item setting-teams--count">
+        <div class="setting-label">Count</div>
+        <div class="setting-value">{{ ::settings.setting.teamBlue.count }}</div>
+      </div>
+      <div class="setting-item setting-teams--speed">
+        <div class="setting-label">Speed</div>
+        <div class="setting-value">{{ ::settings.setting.teamBlue.speed }}</div>
+      </div>
+    </uib-tab>
+  </uib-tabset>
 
-<div class="setting-tools">
-  <a ng-click="settings.activateSettings()" class="btn btn-success btn-lg">
-    <i class="fa fa-check-square"></i> Activate setting
-  </a>
+  <div class="setting-tools">
+    <a ng-click="settings.activateSettings()" class="btn btn-success btn-lg">
+      <i class="fa fa-check-square"></i> Activate setting
+    </a>
+  </div>
+</div>
+
+<div class="alert alert-warning" ng-show="!settings.setting.alias">
+  <h3><i class="fa fa-exclamation-triangle"></i> Ups! Error 404</h3>
+  <hr>
+  <p>The setting you were looking for does not exist.</p>
 </div>

@@ -6,4 +6,6 @@
  */
 
 angular.module('Hns.services', [])
-  .service('PubSubService', require('./pubSubService'));
+  .service('PubSubService', require('./pubSubService'))
+  //
+  .directive('hnsFlash', require('./flashMessageDirective'));

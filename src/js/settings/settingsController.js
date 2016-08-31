@@ -58,7 +58,7 @@ function SettingsShowSingleAction($stateParams, SettingsResource, SettingsStorag
 // ---------------------------------------
 // - CREATE
 
-SettingsCreateAction.$inject = ['SettingsResource'];
+SettingsCreateAction.$inject = ['SettingsResource', 'PubSubService'];
 
 /**
  * Responsible for creating settings
@@ -66,7 +66,7 @@ SettingsCreateAction.$inject = ['SettingsResource'];
  * @param SettingsResource
  * @constructor
  */
-function SettingsCreateAction(SettingsResource) {
+function SettingsCreateAction(SettingsResource, PubSubService) {
   'use strict';
 
   var vm, settings;
@@ -107,6 +107,9 @@ function SettingsCreateAction(SettingsResource) {
 
     settings.$save(function() {
       console.log('saved');
+      PubSubService.publish(channels.FLASH_SUCCESS, [{ type: 'success', msg: 'Settings were saved'}]);
+
+      vm.isSaving = false;
     });
   }
 }

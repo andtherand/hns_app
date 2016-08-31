@@ -5,7 +5,7 @@
  * This is the main entry point for the client-side app
  */
 
-angular.module('HnsApp', ['ui.bootstrap', 'Hns.templates', 'Hns.settings', 'Hns.services', 'Hns.game'])
+angular.module('HnsApp', ['ngSanitize', 'ui.bootstrap', 'Hns.templates', 'Hns.settings', 'Hns.services', 'Hns.game'])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     'use strict';
 
