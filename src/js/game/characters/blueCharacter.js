@@ -7,7 +7,7 @@
  * This represents a member of the blue team.
  * Shows a different approach to polymorphism
  */
-var BaseCharacter = require('./BaseCharacter'),
+var BaseCharacter = require('./baseCharacter'),
   BlueCharacter = Object.create(BaseCharacter);
 
 BlueCharacter.isDead = false;

@@ -10,8 +10,8 @@
 var requiredModules = ['ngResource', 'ui.router'];
 
 angular.module('Hns.settings', requiredModules)
-  .factory('SettingsResource', require('./SettingsResource'))
-  .service('SettingsStorage', require('./SettingsStorage'))
+  .factory('SettingsResource', require('./settingsResource'))
+  .service('SettingsStorage', require('./settingsStorage'))
   //
   .controller('SettingsShowAction', require('./settingsController').showAction)
   .controller('SettingsCreateAction', require('./settingsController').createAction)
@@ -26,7 +26,7 @@ angular.module('Hns.settings', requiredModules)
         url: '/settings',
         controller: 'SettingsShowAction',
         controllerAs: 'settings',
-        templateUrl: 'template/controllers/settings/show.html',
+        templateUrl: 'template/settings/show.html',
         data: {
           pageTitle: 'Settings'
         }
@@ -37,7 +37,7 @@ angular.module('Hns.settings', requiredModules)
         url: '/settings/create',
         controller: 'SettingsCreateAction',
         controllerAs: 'createSettings',
-        templateUrl: 'template/controllers/settings/create.html',
+        templateUrl: 'template/settings/create.html',
         data: {
           pageTitle: 'Create settings'
         }
@@ -47,7 +47,7 @@ angular.module('Hns.settings', requiredModules)
         url: '/settings/:id',
         controller: 'SettingsShowSingleAction',
         controllerAs: 'settings',
-        templateUrl: 'template/controllers/settings/show-single.html',
+        templateUrl: 'template/settings/show-single.html',
         data: {
           pageTitle: 'Single settings'
         }

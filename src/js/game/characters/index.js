@@ -5,7 +5,7 @@
  * Bundles the characters and the FSM
  */
 
-require('./StackBasedFSM');
-require('./BaseCharacter');
-require('./RedCharacter');
-require('./BlueCharacter');
+require('./stackBasedFSM');
+require('./baseCharacter');
+require('./redCharacter');
+require('./blueCharacter');

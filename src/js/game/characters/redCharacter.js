@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var BaseCharacter = require('./BaseCharacter'),
+var BaseCharacter = require('./baseCharacter'),
     RedCharacter = Object.create(BaseCharacter);
 
 RedCharacter.preySearch = function() {

@@ -10,23 +10,67 @@ var channels = require('../config/events');
 GameController.$inject = ['PubSubService'];
 
 function GameController(PubSubService) {
-  var maxColumns = 50,
-      maxRows = 37,
-      cursors,
+  // --------------------
+  // - INIT
+
+  var cursors,
+      redGroup,
+      blueGroup,
+      spriteDimension = 16,
+      maxColumns = 50,      // 16x50 = 800 = max width
+      maxRows = 37,         // 16x37 = 592 = max height
       game = new Phaser.Game(800, 592, Phaser.CANVAS, 'game-canvas', {
         preload: preload,
         create: create,
         update: update
       });
 
-  PubSubService
-    .addSubscriber(channels.ACTIVATE_SETTINGS, updateGame);
+  // add a subscriber for a settings activation event
+  PubSubService.addSubscriber(channels.ACTIVATE_SETTINGS, updateGame);
 
   /**
    * kills the current game and re initializes a new one
    */
   function updateGame(settings) {
-    game.destroy();
+    spawnCharacters(redGroup, 'teamRed', settings.teamRed.count);
+    spawnCharacters(blueGroup, 'teamBlue', settings.teamBlue.count);
+  }
+
+  /**
+   * adds or removes characters
+   * and places them randomly on the canvas
+   *
+   * @param team
+   * @param teamName
+   * @param count
+   */
+  function spawnCharacters(team, teamName, count) {
+    var items = team.children,
+        itemsCount = items.length,
+        diff = Math.abs(itemsCount - count);
+
+    if (itemsCount < count) {
+      for (var i = 0; i < diff; i++) {
+        var coords = randomCoords();
+        team.create(coords.x, coords.y, teamName, itemsCount + i + 1);
+      }
+
+    } else if (itemsCount > count) {
+
+      for (var i = itemsCount - 1; i >= itemsCount- diff; i--) {
+        if (team.getAt(i)) {
+          console.log(i);
+          team.removeChildAt(i);
+        }
+      }
+    }
+  }
+
+  function randomCoords() {
+    return {
+      x: game.rnd.between(0, spriteDimension * (maxColumns - spriteDimension)),
+      y: game.rnd.between(0, spriteDimension * (maxRows - spriteDimension))
+    }
   }
 
   // --------------------
@@ -81,14 +125,19 @@ function GameController(PubSubService) {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     // add characters
-    teamred = game.add.sprite(0, 0, 'teamRed');
-    teamblue = game.add.sprite(32, 32, 'teamBlue');
+    var randomRed = randomCoords(),
+        randomBlue = randomCoords();
 
-    game.physics.arcade.enable(teamred);
-    game.physics.arcade.enable(teamblue);
+    redGroup = game.add.group();
+    blueGroup = game.add.group();
+
+    redGroup.create(randomRed.x, randomRed.y, 'teamRed', 0);
+    blueGroup.create(randomBlue.x, randomBlue.y, 'teamBlue', 0);
+
+    /*game.physics.arcade.enable(teamred);
+    game.physics.arcade.enable(teamblue);*/
 
     cursors = game.input.keyboard.createCursorKeys();
-
   }
 
   function update() {

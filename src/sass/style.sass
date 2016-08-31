@@ -1,4 +1,19 @@
 // --------------------------
+// - TABLE OF CONTENTS
+// --------------------------
+//
+// 1.   IMPORTS
+// 2.   TAGS
+// 3.   HEADER
+// 4.   SECTIONS
+// 4.1    Settings.List
+// 4.2    Settings.Creation
+// 4.3    Settings.Single
+// 4.4    Game
+// 5.   UTILS
+//
+// --------------------------
+// --------------------------
 // - IMPORTS
 
 @import "../../node_modules/font-awesome/scss/font-awesome.scss"
@@ -26,7 +41,9 @@ a
   .settings-list--item
     @extend .clearfix
     padding: 0.5em
-    margin-bottom: 1.2em
+
+    &:last-of-type
+      margin-bottom: 1.2em
 
     &:nth-of-type(odd)
       background-color: #e3e3e3
@@ -91,3 +108,9 @@ a
   width: 800px
   height: 592px
   margin: auto
+
+// --------------------------
+// - UTILS
+
+.holder
+  margin-bottom: 2em

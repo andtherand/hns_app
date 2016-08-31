@@ -2,6 +2,8 @@
  * Created by my on 30.08.16.
  */
 
+var channels = require('../config/events');
+
 /**
  * Shares the settings made with other controllers.
  * It's kind of a storage.
@@ -25,12 +27,16 @@ function SettingsStorage(PubSubService) {
   // --------------------------
   // - PRIVATE
 
-  function _set() {
+  function _set(pSettings) {
+    settings = pSettings;
 
+    PubSubService.publish(channels.ACTIVATE_SETTINGS, settings);
+
+    return service;
   }
 
   function _get() {
-
+    return settings;
   }
 
   return service;

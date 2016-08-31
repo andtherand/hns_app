@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var StackBasedFSM = require('./StackBasedFSM');
+var StackBasedFSM = require('./stackBasedFSM');
 
 /**
  * The base character for any team. Extendable.

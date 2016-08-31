@@ -2,6 +2,8 @@
  * Created by my on 30.08.16.
  */
 
+var channels = require('../config/events');
+
 /**
  * SettingsShowAction is responsible for crud operations concerning the settings
  */
@@ -15,6 +17,8 @@ SettingsShowAction.$inject = ['SettingsResource'];
  * @constructor
  */
 function SettingsShowAction(SettingsResource) {
+  'use strict';
+
   var vm = this;
 
   // init the entries
@@ -27,20 +31,28 @@ function SettingsShowAction(SettingsResource) {
    * callback is called when data has arrived on the client
    */
   function all() {
-    console.log(vm.settings);
   }
 }
 
 // --
 
-SettingsShowSingleAction.$inject = ['$stateParams', 'SettingsResource'];
+SettingsShowSingleAction.$inject = ['$stateParams', 'SettingsResource', 'SettingsStorage'];
 
-function SettingsShowSingleAction($stateParams, SettingsResource) {
+function SettingsShowSingleAction($stateParams, SettingsResource, SettingsStorage) {
+  'use strict';
+
   var vm = this;
 
   vm.setting = SettingsResource.get({ id: $stateParams.id }, function () {
     console.log('loading of id ', $stateParams.id, ' done');
   });
+
+  /**
+   * activates new settings and triggers a publish
+   */
+  vm.activateSettings = function() {
+    SettingsStorage.set(vm.setting);
+  }
 }
 
 // ---------------------------------------
@@ -55,6 +67,8 @@ SettingsCreateAction.$inject = ['SettingsResource'];
  * @constructor
  */
 function SettingsCreateAction(SettingsResource) {
+  'use strict';
+
   var vm, settings;
 
   vm = this;
@@ -94,7 +108,6 @@ function SettingsCreateAction(SettingsResource) {
     settings.$save(function() {
       console.log('saved');
     });
-
   }
 }
 
