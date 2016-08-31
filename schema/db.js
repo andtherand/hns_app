@@ -11,7 +11,7 @@ var config = require('../conf/config.json');
 
 if (process.env.NODE_ENV == 'staging') {
  config = require('../conf/config.staging.json');
- console.log('---- i am staging');
+ console.log('---- i am staging' + config.couchbase.endpoint);
 }
 
 var endpoint = config.couchbase.detailed_errors === 1 ? config.couchbase.endpoint + '?detailed_errcodes=1' : config.couchbase.endpoint;
