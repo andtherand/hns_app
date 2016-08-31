@@ -8,10 +8,12 @@
 
 // Require dependencies
 var config = require('../conf/config.json');
-console.log(process.env);
+
 if (process.env.NODE_ENV == 'staging') {
-   config = require('../conf/config.staging.json');
+ config = require('../conf/config.staging.json');
+ console.log('---- i am staging');
 }
+
 var endpoint = config.couchbase.detailed_errors === 1 ? config.couchbase.endpoint + '?detailed_errcodes=1' : config.couchbase.endpoint;
 var bucketName = config.couchbase.bucket;
 
