@@ -7,10 +7,10 @@
  */
 
 // Require dependencies
-var config = require('../conf/config.json');
+var config = require('../conf/config');
 
 if (process.env.NODE_ENV == 'staging') {
- config = require('../conf/config.staging.json');
+ config = require('../conf/config.staging');
  console.log('---- i am staging' + config.couchbase.endpoint);
 }
 
