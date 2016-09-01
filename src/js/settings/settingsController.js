@@ -8,30 +8,48 @@ var channels = require('../config/events');
  * SettingsShowAction is responsible for crud operations concerning the settings
  */
 
-SettingsShowAction.$inject = ['SettingsResource'];
+SettingsShowAction.$inject = ['$scope', 'SettingsResource'];
 
 /**
  * The read controller that shows all settings saved
  *
+ * @param $scope
  * @param SettingsResource
  * @constructor
  */
-function SettingsShowAction(SettingsResource) {
+function SettingsShowAction($scope, SettingsResource) {
   'use strict';
 
-  var vm = this;
-
-  // init the entries
-  vm.settings = SettingsResource.query(all);
+  var vm, settings;
 
   // ------------------------------------
-  // - HELPER
+  // - INIT
 
-  /**
-   * callback is called when data has arrived on the client
-   */
-  function all() {
-  }
+  vm = this;
+  settings = SettingsResource.query();
+
+  // init the entries
+  vm.settingsCount = SettingsResource.count();
+
+  vm.currentPage = 1;
+  vm.itemsPerPage = 5;
+
+  // ------------------------------------
+  // - Public Fns
+
+  settings.$promise.then(function() {
+
+    /**
+     * updates the pager when the currentPage changes
+     * Note: this sadly has to use $scope
+     */
+    $scope.$watch('settings.currentPage', function() {
+      var begin = (vm.currentPage - 1) * vm.itemsPerPage,
+        end = begin + vm.itemsPerPage;
+
+      vm.filteredSettings = settings.slice(begin, end);
+    });
+  });
 }
 
 // --

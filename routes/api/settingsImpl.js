@@ -149,4 +149,24 @@ module.exports.update = function update(req, res, next) {
   });
 };
 
+// -----------------------------------
+// - HELPERS
+
+/**
+ * counts all settings depending on a given filter
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
+module.exports.count = function count(req, res, next) {
+  'use strict';
+  var filter = req.filter || { _type: "Settings" };
+  var options = req.options || {};
+
+  SettingsModel.count(filter, options, function(err, result) {
+    return returnResponse(err, { count: result }, res);
+
+  });
+};
 

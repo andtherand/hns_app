@@ -1,7 +1,10 @@
 <h3>Settings</h3>
-<!--found some settings show them-->
-<div class="settings-list" ng-show="settings.settings.length">
-  <div class="settings-list--item" ng-repeat="setting in settings.settings">
+<!-- found some settings show them -->
+<div class="settings-list" ng-show="settings.filteredSettings.length">
+
+  <div class="settings-list--count">Total: {{ settings.settingsCount.count }}</div>
+
+  <div class="settings-list--item" ng-repeat="setting in settings.filteredSettings">
     <div class="settings-list--values">
       <a ui-sref="settings-details({ id: setting._id })">
         <div class="setting-list--value setting-list--id">{{ ::setting._id }}</div>
@@ -12,13 +15,24 @@
   </div>
 
   <div class="settings-tools">
-    <a ui-sref="settings-create" class="btn btn-primary">
-      Create Settings
-    </a>
+    <ul class="pagination-sm"
+        uib-pagination
+        boundary-links="true"
+        items-per-page="settings.itemsPerPage"
+        total-items="settings.settingsCount.count"
+        ng-model="settings.currentPage"
+        previous-text="&lsaquo;"
+        next-text="&rsaquo;"
+        first-text="&laquo;"
+        last-text="&raquo;"
+        >
+    </ul>
+    <hr>
+    <a ui-sref="settings-create" class="btn btn-primary">Create Settings</a>
   </div>
 </div>
 
-<div class="nothing-found alert alert-info" ng-show="settings.settings.length == 0">
+<div class="nothing-found alert alert-info" ng-show="settings.filteredSettings.length == 0">
   <h3>Nothing found</h3>
   <p>Sorry, but there are no settings to show.</p>
   <hr>

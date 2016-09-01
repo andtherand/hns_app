@@ -8,11 +8,15 @@ module.exports = {
   },
 
   sass: {
-    src: src + "/sass/**/*.{sass,scss}",
+    src: src + "/sass/style.sass",
     dest: dest + '/css',
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
-      imagePath: 'images' // Used by the image-url helper
+      imagePath: 'images', // Used by the image-url helper
+      includePaths: [
+        './node_modules/font-awesome/scss',
+        './node_modules/bootstrap-sass/assets/stylesheets'
+      ]
     }
   },
 

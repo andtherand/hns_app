@@ -24,7 +24,9 @@ SettingsResource.$inject = ['$resource'];
 function SettingsResource($resource) {
   'use strict';
 
-  return $resource(APIS.SETTINGS_ENDPOINT);
+  return $resource(APIS.SETTINGS_ENDPOINT + '/:id', {}, {
+    count: { method: 'GET', url: APIS.SETTINGS_ENDPOINT + '/count' }
+  });
 }
 
 // -----------------------------------

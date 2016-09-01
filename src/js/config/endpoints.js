@@ -8,6 +8,6 @@
 'use strict';
 
 module.exports = {
-  SETTINGS_ENDPOINT: '/api/settings/:id'
+  SETTINGS_ENDPOINT: '/api/settings'
 };
 

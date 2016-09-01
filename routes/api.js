@@ -14,11 +14,15 @@ var settings = require('./api/settingsImpl');
 
 // create
 router.post('/settings', settings.create);
+
 // Read: get all settings
 router.get('/settings', settings.findAll);
+router.get('/settings/count', settings.count);
 // Read: settings by alias
 router.get('/settings/by-alias/:alias', settings.findOneByAlias);
 router.get('/settings/:id', settings.findOne);
+
+
 // update
 router.put('/settings/:id', settings.update);
 // no delete currently

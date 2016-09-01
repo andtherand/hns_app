@@ -1,0 +1,73 @@
+// --------------------------
+// - The settings module
+//
+// 1  Settings.List
+// 2  Settings.Creation
+// 3  Settings.Single
+
+// --------------------------
+// - SECTIONS.Settings.List
+
+.settings-list
+  .settings-list--item
+    @extend .clearfix
+    padding: 0.5em
+
+    &:last-of-type
+      margin-bottom: 1.2em
+
+    &:nth-of-type(odd)
+      background-color: #e3e3e3
+
+  .settings-list--values
+    @include make-md-column(12)
+
+  .setting-list--value
+    @include make-md-column(4)
+
+  .settings-tools
+    padding: 1.5em 0 0 0
+    border-top: 1px solid #999
+
+// --------------------------
+// - SECTIONS.Settings.Creation
+
+.settings-creation
+  @include make-row()
+
+  .settings-creation--title
+    font-size: 1.2em
+
+.settings-creation--grid
+  @include make-md-column(3)
+
+.settings-creation--teamred,
+.settings-creation--teamblue
+  @include make-md-column(3)
+  @include make-md-column-offset(1)
+
+// --------------------------
+// - SECTIONS.Settings.Single
+
+.setting
+  // gerneral
+  .setting-item
+    @extend .clearfix
+    @include make-row()
+    padding: .75em 0
+
+    &:nth-of-type(odd)
+      background-color: #e3e3e3
+
+  .setting-label
+    @include make-md-column(2)
+
+  .setting-label:after
+    content: ':'
+
+  .setting-value
+    @include make-md-column(4)
+    @extend .text-left
+
+  .tab-content
+    padding: 1em
