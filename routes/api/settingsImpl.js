@@ -64,6 +64,8 @@ module.exports.create = function create(req, res, next) {
     teamBlue: body.teamBlue
   });
 
+  console.log(settings);
+
   settings.save(function(err) {
     returnResponse(err, settings, res);
   });

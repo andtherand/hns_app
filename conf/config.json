@@ -1,6 +1,6 @@
 {
   "couchbase": {
-    "endpoint": "127.0.0.1:8091",
+    "endpoint": "localhost:8091",
     "n1ql": "127.0.0.1:8093",
     "bucket": "hide_n_seek",
     "detailed_errors": 1,

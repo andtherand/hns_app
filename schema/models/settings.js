@@ -16,8 +16,8 @@ var nameGen = require('../../services/nameGenerator');
 // - MODEL DEFINITION
 
 var SettingsModel = ottoman.model('Settings', {
-    createdOn: { type: 'Date', default: new Date() },
-    alias: { type: 'string', default: nameGen.generate(), readonly: true },
+    createdOn: { type: 'Date', default: Date.now },
+    alias: { type: 'string', default: nameGen.generate, readonly: true },
 
     grid: {
       width: 'integer',
