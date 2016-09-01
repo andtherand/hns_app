@@ -6,7 +6,7 @@
 
 module.exports = {
   couchbase: {
-    endpoint: "couchbase:8091",
+    endpoint: "http://couchbase:8091",
     n1ql: "hns_couchbase:8093",
     bucket: "hide_n_seek",
     detailed_errors: 1,
