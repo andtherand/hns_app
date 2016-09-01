@@ -23,6 +23,12 @@ var ottoman = require('ottoman');
 var cluster = new couchbase.Cluster(endpoint);
 var bucket = cluster.openBucket(bucketName);
 
+bucket.operationTimeout = 120 * 1000;
+
+bucket.on('error', function(err) {
+  console.log(err);
+});
+
 // let ottoman know of the bucket we want to use
 ottoman.bucket = bucket;
 
