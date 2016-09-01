@@ -33,7 +33,7 @@ function returnResponse(err, results, res) {
 function returnError(err, res) {
   'use strict';
 
-  console.log("An error occured: " + JSON.stringify(err));
+  console.error("An error occured: " + JSON.stringify(err));
   res.status = 400;
   res.send(err);
 }
