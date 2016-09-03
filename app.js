@@ -13,7 +13,7 @@ var routes = require('./routes/index');
 var apiRoutes = require('./routes/api');
 
 var app = express();
-app.use(helmet()); // for hardening
+//app.use(helmet()); // for hardening
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
