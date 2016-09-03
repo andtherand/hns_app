@@ -11,11 +11,6 @@ var config = require('../conf/config');
 
 if (process.env.NODE_ENV == 'staging') {
   config = require('../conf/config.staging');
-  console.log('---- i am staging' + config.couchbase.endpoint);
-}
-
-if (process.env.CB_ADDRESS) {
-  config.couchbase.endpoint = process.env.CB_ADDRESS;
 }
 
 var endpoint = config.couchbase.detailed_errors === 1 ? config.couchbase.endpoint + '?detailed_errcodes=1' : config.couchbase.endpoint;
@@ -23,6 +18,10 @@ var bucketName = config.couchbase.bucket;
 
 var couchbase = require('couchbase');
 var ottoman = require('ottoman');
+
+if (process.env.CB_ADDRESS) {
+  endpoint = process.env.CB_ADDRESS;
+}
 
 var cluster = new couchbase.Cluster(endpoint);
 var bucket = cluster.openBucket(bucketName);
