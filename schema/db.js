@@ -29,7 +29,7 @@ var bucket = cluster.openBucket(bucketName);
 bucket.operationTimeout = 120 * 1000;
 
 bucket.on('error', function(err) {
-  console.log(err);
+  console.log(endpoint, err);
 });
 
 // let ottoman know of the bucket we want to use
