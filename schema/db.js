@@ -20,7 +20,7 @@ var couchbase = require('couchbase');
 var ottoman = require('ottoman');
 
 if (process.env.CB_ADDRESS) {
-  endpoint = process.env.CB_ADDRESS;
+  endpoint = config.couchbase.detailed_errors === 1 ? process.env.CB_ADDRESS + '?detailed_errcodes=1' : process.env.CB_ADDRESS;
 }
 
 var cluster = new couchbase.Cluster(endpoint);
