@@ -19,17 +19,15 @@ var bucketName = config.couchbase.bucket;
 var couchbase = require('couchbase');
 var ottoman = require('ottoman');
 
-if (process.env.CB_ADDRESS) {
-  endpoint = config.couchbase.detailed_errors === 1 ? process.env.CB_ADDRESS + '?detailed_errcodes=1' : process.env.CB_ADDRESS;
-}
-
 var cluster = new couchbase.Cluster(endpoint);
 var bucket = cluster.openBucket(bucketName);
 
-bucket.operationTimeout = 120 * 1000;
-
 bucket.on('error', function(err) {
   console.log(endpoint, err);
+});
+
+bucket.on('connect', function () {
+  console.log('Couchbase Connected');
 });
 
 // let ottoman know of the bucket we want to use
