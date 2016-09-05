@@ -6,11 +6,15 @@
 
   <div class="settings-list--item" ng-repeat="setting in settings.filteredSettings">
     <div class="settings-list--values">
-      <a ui-sref="settings-details({ id: setting._id })">
-        <div class="setting-list--value setting-list--id">{{ ::setting._id }}</div>
-        <div class="setting-list--value setting-list--alias">{{ ::setting.alias }}</div>
-        <div class="setting-list--value setting-list--created">{{ ::setting.createdOn }}</div>
-      </a>
+        <div class="settings-list--value setting-list--id">{{ ::setting._id }}</div>
+        <div class="settings-list--value setting-list--alias">{{ ::setting.alias }}</div>
+        <div class="settings-list--value setting-list--created">{{ ::setting.createdOn }}</div>
+        <div class="settings-list--value setting-list--actions">
+          <a class="btn btn-sm btn-primary" ui-sref="settings-details({ id: setting._id })">
+            <i class="fa fa-eye"></i> Show
+          </a>
+        </div>
+
     </div>
   </div>
 

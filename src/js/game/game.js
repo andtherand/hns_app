@@ -2,7 +2,6 @@
  * Created by my on 30.08.16.
  */
 
-
 var channels = require('../config/events');
 var BlueCharacter = require('./characters').blueCharacter;
 var RedCharacter = require('./characters').redCharacter;
@@ -23,9 +22,6 @@ function GameController(PubSubService) {
       blueGroup,
       map,
       layer,
-      spriteDimension = 16,
-      maxColumns = 50,      // 16x50 = 800 = max width
-      maxRows = 37,         // 16x37 = 592 = max height
       game = new Phaser.Game(800, 592, Phaser.CANVAS, 'game-canvas', {
         preload: preload,
         create: create,

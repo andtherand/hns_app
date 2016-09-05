@@ -75,25 +75,27 @@ var BaseCharacter = {
    * @param index
    */
   randomPlaceInWorld: function randomPlaceInWorld(index) {
-    var character, coords, layer;
+    var characterClass, coords, layer, character;
 
-    character = this;
+    characterClass = this;
 
     if (!this.group) {
       throw new Error('group is missing!');
     }
 
     coords = randomCoords();
-    console.info('character with name:', this.name, ', x:', coords.x, ', y:', coords.y, ' team:', this.team);
+    console.info('character with name:', this.name, 'x:', coords.x, 'y:', coords.y, 'team:', this.team);
 
     layer = index || 0;
 
-    this.group.create(coords.x, coords.y, this.team, layer);
+    character = this.group.create(coords.x, coords.y, this.team, layer);
+    character.physicsBodyType =  Phaser.Physics.ARCADE;
+    character.enableBody = true;
 
     function randomCoords() {
       return {
-        x: character.game.rnd.between(0, character.spriteDimension * (character.maxColumns - character.spriteDimension)),
-        y: character.game.rnd.between(0, character.spriteDimension * (character.maxRows - character.spriteDimension))
+        x: characterClass.game.rnd.between(0, characterClass.spriteDimension * (characterClass.maxColumns - characterClass.spriteDimension)),
+        y: characterClass.game.rnd.between(0, characterClass.spriteDimension * (characterClass.maxRows - characterClass.spriteDimension))
       }
     }
 
