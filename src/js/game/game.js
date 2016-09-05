@@ -2,7 +2,10 @@
  * Created by my on 30.08.16.
  */
 
+
 var channels = require('../config/events');
+var BlueCharacter = require('./characters').blueCharacter;
+var RedCharacter = require('./characters').redCharacter;
 
 /**
  * The main game file wrapped in a self-invoking anonymous function.
@@ -10,12 +13,16 @@ var channels = require('../config/events');
 GameController.$inject = ['PubSubService'];
 
 function GameController(PubSubService) {
+  'use strict';
+
   // --------------------
   // - INIT
 
   var cursors,
       redGroup,
       blueGroup,
+      map,
+      layer,
       spriteDimension = 16,
       maxColumns = 50,      // 16x50 = 800 = max width
       maxRows = 37,         // 16x37 = 592 = max height
@@ -32,8 +39,8 @@ function GameController(PubSubService) {
    * kills the current game and re initializes a new one
    */
   function updateGame(settings) {
-    spawnCharacters(redGroup, 'teamRed', settings.teamRed.count);
-    spawnCharacters(blueGroup, 'teamBlue', settings.teamBlue.count);
+    spawnCharacters(redGroup, RedCharacter, 'red', settings.teamRed);
+    spawnCharacters(blueGroup, BlueCharacter, 'blue', settings.teamBlue);
   }
 
   /**
@@ -41,35 +48,36 @@ function GameController(PubSubService) {
    * and places them randomly on the canvas
    *
    * @param team
-   * @param teamName
-   * @param count
+   * @param characterClass
+   * @param namePrefix
+   * @param settings
    */
-  function spawnCharacters(team, teamName, count) {
-    var items = team.children,
-        itemsCount = items.length,
-        diff = Math.abs(itemsCount - count);
+  function spawnCharacters(team, characterClass, namePrefix, settings) {
+    var items, itemsCount, diff, i;
 
-    if (itemsCount < count) {
-      for (var i = 0; i < diff; i++) {
-        var coords = randomCoords();
-        team.create(coords.x, coords.y, teamName, itemsCount + i + 1);
+    items = team.children;
+    itemsCount = items.length;
+    diff = Math.abs(itemsCount - settings.count);
+
+    if (itemsCount < settings.count) {
+      for (i = 0; i < diff; i++) {
+        var teamMember = characterClass.create({
+          game: game,
+          group: team,
+          sightLength: settings.sightLength,
+          speed: settings.speed,
+          name: [namePrefix, '-', i].join('')
+        });
+        teamMember.randomPlaceInWorld(itemsCount + i + 1);
       }
 
-    } else if (itemsCount > count) {
+    } else if (itemsCount > settings.count) {
 
-      for (var i = itemsCount - 1; i >= itemsCount- diff; i--) {
+      for (i = itemsCount - 1; i >= itemsCount - diff; i--) {
         if (team.getAt(i)) {
-          console.log(i);
           team.removeChildAt(i);
         }
       }
-    }
-  }
-
-  function randomCoords() {
-    return {
-      x: game.rnd.between(0, spriteDimension * (maxColumns - spriteDimension)),
-      y: game.rnd.between(0, spriteDimension * (maxRows - spriteDimension))
     }
   }
 
@@ -125,14 +133,23 @@ function GameController(PubSubService) {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     // add characters
-    var randomRed = randomCoords(),
-        randomBlue = randomCoords();
-
     redGroup = game.add.group();
     blueGroup = game.add.group();
 
-    redGroup.create(randomRed.x, randomRed.y, 'teamRed', 0);
-    blueGroup.create(randomBlue.x, randomBlue.y, 'teamBlue', 0);
+    var blueChar = BlueCharacter.create({
+      name: 'blue-0',
+      game: game,
+      group: blueGroup
+    });
+
+    var redChar = RedCharacter.create({
+      name: 'red-0',
+      game: game,
+      group: redGroup
+    });
+
+    blueChar.randomPlaceInWorld();
+    redChar.randomPlaceInWorld();
 
     /*game.physics.arcade.enable(teamred);
     game.physics.arcade.enable(teamblue);*/

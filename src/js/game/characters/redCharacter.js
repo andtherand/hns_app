@@ -6,6 +6,8 @@
 var BaseCharacter = require('./baseCharacter'),
     RedCharacter = Object.create(BaseCharacter);
 
+RedCharacter.team = 'teamRed';
+
 RedCharacter.preySearch = function() {
 
 };

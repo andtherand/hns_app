@@ -4,8 +4,5 @@
 /**
  * Bundles the characters and the FSM
  */
-
-require('./stackBasedFSM');
-require('./baseCharacter');
-require('./redCharacter');
-require('./blueCharacter');
+module.exports.redCharacter = require('./redCharacter');
+module.exports.blueCharacter = require('./blueCharacter');

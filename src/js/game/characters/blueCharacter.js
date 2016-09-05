@@ -10,6 +10,8 @@
 var BaseCharacter = require('./baseCharacter'),
   BlueCharacter = Object.create(BaseCharacter);
 
+BlueCharacter.team = 'teamBlue';
+
 BlueCharacter.isDead = false;
 
 /**
