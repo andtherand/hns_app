@@ -9,8 +9,8 @@
 // Require dependencies
 var config = require('../conf/config');
 
-if (process.env.NODE_ENV == 'staging') {
-  config = require('../conf/config.staging');
+if (process.env.NODE_ENV == 'production') {
+  config = require('../conf/config.production');
 }
 
 var endpoint = config.couchbase.detailed_errors === 1 ? config.couchbase.endpoint + '?detailed_errcodes=1' : config.couchbase.endpoint;
