@@ -7,11 +7,7 @@
  */
 
 // Require dependencies
-var config = require('../conf/config');
-
-if (process.env.NODE_ENV == 'production') {
-  config = require('../conf/config.production');
-}
+var config = require('../conf');
 
 var endpoint = config.couchbase.detailed_errors === 1 ? config.couchbase.endpoint + '?detailed_errcodes=1' : config.couchbase.endpoint;
 var bucketName = config.couchbase.bucket;
