@@ -23,7 +23,7 @@ var cluster = new couchbase.Cluster(endpoint);
 var bucket = cluster.openBucket(bucketName);
 
 bucket.on('error', function(err) {
-  console.log(endpoint, err);
+  console.log(config, err);
 });
 
 bucket.on('connect', function () {
