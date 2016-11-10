@@ -5,7 +5,7 @@
 var channels = require('../config/events');
 
 /**
- * The main game file wrapped in a self-invoking anonymous function.
+ * The main game
 */
 GameController.$inject = ['PubSubService'];
 
